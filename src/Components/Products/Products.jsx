@@ -1,13 +1,19 @@
 import React, { useEffect, useState } from "react";
-
+import { useDispatch } from "react-redux";
+import { add } from "../../store/CartSlice";
+import { getProducts } from "../../store/ProductSlice";
 const Products = () => {
+  const dispatch = useDispatch();
+
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    fetch("https://fakestoreapi.com/products")
-      .then((response) => response.json())
-      .then((data) => setProducts(data))
-      .catch((error) => console.error(error));
+    // fetch("https://fakestoreapi.com/products")
+    //   .then((response) => response.json())
+    //   .then((data) => setProducts(data))
+    //   .catch((error) => console.error(error));
+
+    dispatch(getProducts);
   }, []);
 
   const generateRatingStars = (rating) => {
@@ -34,6 +40,10 @@ const Products = () => {
     return starComponents;
   };
 
+  const addToCart = (product) => {
+    dispatch(add(product));
+  };
+
   return (
     <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-4">
       {products.map((product) => (
@@ -58,7 +68,12 @@ const Products = () => {
               <p className="ml-2 font-bold">{product.rating.rate}</p>
             </div>
             <div className="card-actions justify-center mt-10">
-              <button className="btn btn-outline">Buy Now</button>
+              <button
+                className="btn btn-outline"
+                onClick={() => addToCart(product)}
+              >
+                Buy Now
+              </button>
             </div>
           </div>
         </div>
