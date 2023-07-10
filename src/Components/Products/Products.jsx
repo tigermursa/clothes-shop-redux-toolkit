@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { add } from "../../store/CartSlice";
 import { getProducts } from "../../store/ProductSlice";
 const Products = () => {
   const dispatch = useDispatch();
 
-  const [products, setProducts] = useState([]);
+  const { data: products } = useSelector((state) => state.products);
+
+  // const [products, setProducts] = useState([]);
 
   useEffect(() => {
     // fetch("https://fakestoreapi.com/products")
@@ -13,8 +15,8 @@ const Products = () => {
     //   .then((data) => setProducts(data))
     //   .catch((error) => console.error(error));
 
-    dispatch(getProducts);
-  }, []);
+    dispatch(getProducts());
+  }, [dispatch]);
 
   const generateRatingStars = (rating) => {
     const roundedRating = Math.round(rating);
