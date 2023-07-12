@@ -11,7 +11,7 @@ const Cart = () => {
   };
 
   return (
-    <div className="overflow-x-auto p-4">
+    <div className="overflow-x-auto p-4 pb-56">
       <table className="table">
         {/* head */}
         {cartProducts.length > 0 ? (
