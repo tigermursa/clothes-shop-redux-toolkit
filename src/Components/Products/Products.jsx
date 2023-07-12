@@ -2,14 +2,17 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { add } from "../../store/CartSlice";
 import { getProducts } from "../../store/ProductSlice";
+
+import 'react-toastify/dist/ReactToastify.css';
 const Products = () => {
   const dispatch = useDispatch();
 
-  const { data: products } = useSelector((state) => state.products);
+  const { data: products, status } = useSelector((state) => state.products);
 
   // const [products, setProducts] = useState([]);
 
   useEffect(() => {
+    // first we got api data by normal fetching but now we using redux dispatch wow!
     // fetch("https://fakestoreapi.com/products")
     //   .then((response) => response.json())
     //   .then((data) => setProducts(data))
@@ -18,6 +21,21 @@ const Products = () => {
     dispatch(getProducts());
   }, [dispatch]);
 
+  if (status === "loading") {
+    return (
+      <span className="loading loading-dots loading-lg mt-16 text-red-700"></span>
+    );
+  }
+  if (status === "error") {
+    return (
+      <span className="mt-48 text-red-700 text-2xl">
+        {" "}
+        Something not right here
+      </span>
+    );
+  }
+
+  // products rating starts
   const generateRatingStars = (rating) => {
     const roundedRating = Math.round(rating);
     const starComponents = [];
@@ -48,6 +66,7 @@ const Products = () => {
 
   return (
     <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-4">
+     
       {products.map((product) => (
         <div
           className="card card-compact bg-base-100 shadow-xl border m-10"

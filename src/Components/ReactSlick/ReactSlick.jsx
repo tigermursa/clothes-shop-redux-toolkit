@@ -21,21 +21,21 @@ export default function SimpleSlider() {
         <div>
           <img
             className="w-full h-96 object-cover"
-            src="/public/freestocks-_3Q3tsJ01nc-unsplash.jpg"
+            src="/freestocks-_3Q3tsJ01nc-unsplash.jpg"
             alt=""
           />
         </div>
         <div>
           <img
             className="w-full h-96 object-cover"
-            src="/public/malemoder-1.jpg"
+            src="/malemoder-1.jpg"
             alt=""
           />
         </div>
         <div>
           <img
             className="w-full h-96 object-cover"
-            src="/public/male-model2.jpg"
+            src="/male-model2.jpg"
             alt=""
           />
         </div>

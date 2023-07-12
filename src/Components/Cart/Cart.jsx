@@ -1,28 +1,39 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { remove } from "../../store/CartSlice";
+import { AiOutlineDelete } from "react-icons/ai";
 
 const Cart = () => {
-  const cartProducts = useSelector((state) => state.cart);
+  const cartProducts = useSelector((state) => state.cart.cart);
   const dispatch = useDispatch();
   const removeToCart = (id) => {
     dispatch(remove(id));
   };
 
   return (
-    <div className="overflow-x-auto md:ms-20 md:me-20 ms-0 me-0">
+    <div className="overflow-x-auto p-4">
       <table className="table">
         {/* head */}
-        <thead>
-          <tr>
-            <th>Image</th>
-            <th>Name</th>
-            <th>Price</th>
-            <th>Category</th>
-            <th>Remove</th>
-            <th></th>
-          </tr>
-        </thead>
+        {cartProducts.length > 0 ? (
+          <thead>
+            <tr>
+              <th>Image</th>
+              <th>Name</th>
+              <th className="hidden md:block">Price</th>
+              <th className="hidden md:block">Category</th>
+              <th>Quantity</th>
+              <th>Total</th>
+              <th></th>
+            </tr>
+          </thead>
+        ) : (
+          <tbody>
+            <tr>
+              <td colSpan="7">No items in the cart.</td>
+            </tr>
+          </tbody>
+        )}
+
         <tbody>
           {cartProducts.map((product) => (
             <tr key={product.id}>
@@ -39,15 +50,16 @@ const Cart = () => {
                 </div>
               </td>
               <td>{product.title}</td>
-              <td>{product.price}</td>
-              <td>{product.category}</td>
+              <td className="hidden md:block">{product.price}</td>
+              <td className="hidden md:block">{product.category}</td>
+              <td className="text-center">{product.quantity}</td>
+              <td>{product.quantity * product.price}</td>
               <td>
                 <button
                   className="btn btn-sm btn-outline"
                   onClick={() => removeToCart(product.id)}
                 >
-                  {" "}
-                  Remove{" "}
+                  <AiOutlineDelete />
                 </button>
               </td>
             </tr>

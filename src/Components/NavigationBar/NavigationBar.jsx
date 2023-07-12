@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 const NavigationBar = () => {
-  const cartProducts = useSelector((state) => state.cart);
+  const cartProducts = useSelector((state) => state.cart.cart);
   return (
     <div>
       <div className="navbar bg-pink-100">
@@ -17,6 +17,7 @@ const NavigationBar = () => {
           </NavLink>
         </div>
         <div className="flex-none me-2 md:me-20">
+          <NavLink className="font-bold me-5" to={"/"}>Home</NavLink>
           <NavLink className="font-bold me-5" to={"/about"}>About</NavLink>
           <div className="dropdown dropdown-end">
             <label tabIndex={0} className="btn btn-ghost btn-circle">

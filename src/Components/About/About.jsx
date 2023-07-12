@@ -3,10 +3,10 @@ import React from "react";
 const About = () => {
   return (
     <div className="bg-gradient-to-r from-pink-300 to-white pt-40">
-      <div className="container mx-auto py-8 font-bold">
+      <div className="container mx-auto py-8 font-bold text-justify p-5 md:p-1">
         <h1 className="text-4xl font-bold mb-4">About this website</h1>
         <p className="text-lg leading-7">
-          Welcome to our website dedicated to learning the Redux Toolkit. We
+          Welcome to our website <span className="text-red-600"> dedicated to learning the Redux Toolkit</span> . We
           have utilized advanced concepts such as the Select Hook, Provider,
           Store, and add/remove functionality using Redux. Our aim is to provide
           a comprehensive platform for individuals to enhance their
