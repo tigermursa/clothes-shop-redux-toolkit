@@ -23,7 +23,7 @@ const Products = () => {
 
   if (status === "loading") {
     return (
-      <span className="loading loading-dots loading-lg mt-16 text-red-700"></span>
+      <span className="loading loading-dots loading-lg mt-16 text-pink-300"></span>
     );
   }
   if (status === "error") {
