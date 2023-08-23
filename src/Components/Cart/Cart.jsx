@@ -17,7 +17,7 @@ const Cart = () => {
         {cartProducts.length > 0 ? (
           <thead>
             <tr>
-              <th>Image</th>
+              {/* <th>Image</th> */}
               <th>Name</th>
               <th className="hidden md:block">Price</th>
               <th className="hidden md:block">Category</th>
